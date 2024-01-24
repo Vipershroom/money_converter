@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Money Converter");
-        System.out.println(handle_input());
+        String[] money_list = handle_input();
     }
 
-    public static int handle_input() {
+    public static String[] handle_input() {
         // Handles User Input
         Scanner input_object = new Scanner(System.in);
         System.out.println("Please enter your amount");
@@ -18,10 +18,11 @@ public class Main {
         if (input[1].length() == 1) {
             input[1] = input[1] + "0";
         }
-        for (String i: input) {
-            System.out.println(i);
-        }
-        return 1;
+        return input;
+    }
+
+    public static void calculate() {
+
     }
 
 }
