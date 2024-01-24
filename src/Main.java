@@ -9,10 +9,19 @@ public class Main {
     }
 
     public static int handle_input() {
+        // Handles User Input
         Scanner input_object = new Scanner(System.in);
         System.out.println("Please enter your amount");
-        String input = input_object.nextLine();
-        return Integer.parseInt(input);
+        String[] input = input_object.nextLine().split("\\.", 2);
+
+        // Add a zero if the decimal portion is empty
+        if (input[1].length() == 1) {
+            input[1] = input[1] + "0";
+        }
+        for (String i: input) {
+            System.out.println(i);
+        }
+        return 1;
     }
 
 }
