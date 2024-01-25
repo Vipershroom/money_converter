@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.HashMap;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -21,8 +21,8 @@ public class Main {
         return input;
     }
 
-    public static void calculate() {
-
+    public static void calculate(String[] money_list) {
+        HashMap<String, Integer> money_hash = new HashMap<String, Integer>();
     }
 
 }
