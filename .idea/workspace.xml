@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e8ad621-0165-43ec-ba0b-253471ad42a1" name="Changes" comment="Add calc function">
+    <list default="true" id="0e8ad621-0165-43ec-ba0b-253471ad42a1" name="Changes" comment="Create remainder function">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,13 +50,6 @@
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/sasaki/Desktop/School/CS121/money_converter/money_converter/src/Main.java&quot;
   }
 }</component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -81,7 +75,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706135196854</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Create remainder function">
+      <option name="closed" value="true" />
+      <created>1706195591041</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1706195591041</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,6 +99,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add decimal parsing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add decimal parsing" />
+    <MESSAGE value="Create remainder function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create remainder function" />
   </component>
 </project>

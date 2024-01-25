@@ -1,4 +1,4 @@
-import java.util.Objects;
+import java.text.ParseException;
 import java.util.Scanner;
 import java.util.HashMap;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -7,53 +7,81 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to Money Converter");
         String[] money_list = handle_input();
-        calculate(money_list);
+        HashMap<String, Double> coin = calculate(money_list);
+        renderCoins(coin);
     }
 
     public static String[] handle_input() {
-        // Handles User Input
-        Scanner input_object = new Scanner(System.in);
-        System.out.println("Please enter your amount");
-        String[] input = input_object.nextLine().split("\\.", 2);
+        System.out.println("Please enter your amount:");
+        while (true) {
+            // Handles User Input
+            Scanner input_object = new Scanner(System.in);
+            String line = input_object.nextLine();
 
-        // Add a zero if the decimal portion is empty
-        if (input[1].length() == 1) {
-            input[1] = input[1] + "0";
+            // Check if input is a number
+            try {
+                double num = Double.parseDouble(line);
+            } catch (NumberFormatException err) {
+                System.out.println("Please enter a number");
+                continue;
+            }
+
+            String[] input = line.split("\\.", 2);
+            // Check if decimal is to the hundreths place
+            if (input[1].length() > 2) {
+                System.out.println("Please enter a decimal up to the hundreths place");
+                continue;
+            }
+
+            return input;
         }
-        return input;
-    }
-
-    public static void calculate(String[] money_list) {
-        // Create Coin hashmap
-        HashMap<String, Integer> coins = new HashMap<String, Integer>();
-        coins.put("Quarters", 0);
-        coins.put("Dimes", 0);
-        coins.put("Nickels", 0);
-        coins.put("Pennies", 0);
-
-        int dollar = Integer.parseInt(money_list[0]);
-        double cents = Double.parseDouble(money_list[1]);
-
-        coins.put("Quarters",dollar);
-
-        double quarters = Math.floor(cents / 25);
-        double quarters_remainder = remainder("Quarter", cents);
-        System.out.println(quarters);
-        System.out.println(quarters_remainder);
-
-        System.out.println();
 
     }
 
     public static double remainder(String type, double num) {
-        if (type.equals("Quarter")) {
-            return num % 25;
-        } else if (type.equals("Dime")) {
-            return num % 10;
-        } else if (type.equals("Nickel")) {
-            return num % 5;
-        }
-        return num;
+        // Find the remainder of the amount given the coin type
+        return switch (type) {
+            case "Quarter" -> num % 25;
+            case "Dime" -> num % 10;
+            case "Nickel" -> num % 5;
+            default -> num;
+        };
     }
 
+    public static HashMap<String, Double> calculate(String[] money_list) {
+        // Create Coin hashmap
+        HashMap<String, Double> coins = new HashMap<String, Double>();
+
+        double dollar = Double.parseDouble(money_list[0]);
+        double cents = Double.parseDouble(money_list[1]);
+
+        // Find the amount of coins and remainders
+        double quarters = Math.floor(cents / 25);
+        double quarters_remainder = remainder("Quarter", cents);
+
+        double dimes = Math.floor(quarters_remainder / 10);
+        double dimes_remainder = remainder("Dime", quarters_remainder);
+
+        double nickel = Math.floor(dimes_remainder / 5);
+        double nickel_remainder = remainder("Nickel", dimes_remainder);
+
+        // Put key value pairs into hashmap.
+        coins.put("Quarters", dollar * 4.0 + quarters);
+        coins.put("Dimes", dimes);
+        coins.put("Nickels", nickel);
+        coins.put("Pennies", nickel_remainder);
+
+        return coins;
+    }
+
+    public static void renderCoins(HashMap<String, Double> coins) {
+        // Render the coin amounts
+        coins.forEach((type, amount) -> {
+            if (amount == 0) {
+                return;
+            }
+            System.out.println(type + ": " + amount);
+        });
+    }
 }
+
