@@ -18,21 +18,24 @@ public class Main {
             Scanner input_object = new Scanner(System.in);
             String line = input_object.nextLine();
 
+            if (line.length() < 2) {
+                line = line + ".0";
+            }
+
             // Check if input is a number
             try {
-                double num = Double.parseDouble(line);
+                Double.parseDouble(line);
             } catch (NumberFormatException err) {
                 System.out.println("Please enter a number");
                 continue;
             }
 
             String[] input = line.split("\\.", 2);
-            // Check if decimal is to the hundreths place
+            // Check if decimal is to the hundredths place
             if (input[1].length() > 2) {
-                System.out.println("Please enter a decimal up to the hundreths place");
+                System.out.println("Please enter a decimal up to the hundredths place");
                 continue;
             }
-
             return input;
         }
 
